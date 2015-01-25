@@ -17,7 +17,7 @@ Installation
 ----------------
 edit chirpy/setting.py and update database information
 
-Create Database using the name specified in settings.py
+Create Database using the name specified in settings.py in mysql
 
 cd chirpy
 

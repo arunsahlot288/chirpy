@@ -10,7 +10,6 @@ python 2.7
 mysql 5.5
 
 
-please check the patch for wadostuff
 
 
 ----------------

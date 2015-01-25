@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block content %}             								<!-- displaying profile of logged in user-->
-    <div class="panel right">
+    <div class="panel left" style="width:450px" >
         <h1>{{ user.first_name }}'s Profile</h1>
-        <div class="Wrapper">
+        <div class="Wrapper" style="width:400px">
             <a href="/users/{{ user.username }}">
                 <img class="avatar" src="{{ user.profile.gravatar_url }}">
                 <span class="name">{{ user.first_name }}</span>
@@ -29,10 +29,10 @@
         </div>
     </div>
 
-    <div class="panel right">
-        <h1>{{ user.first_name }}'s Chirpies</h1>									<!-- displaying posts by logged in user-->
+    <div class="panel right" style="width:450px">
+        <h1>{{ user.first_name }}'s Chirps</h1>									<!-- displaying posts by logged in user-->
         {% for chirpy in chirpy %}
-        <div class="Wrapper">
+        <div class="Wrapper" style="width:400px">
             <a href="/users/{{ user.username }}">
                 <img class="avatar" src="{{ user.profile.gravatar_url }}">
                 <span class="name">{{ chirpy.user.first_name }}</span>
@@ -44,10 +44,10 @@
         {% endfor %}
     </div>
 	
-	<div class="panel right">
+	<div class="panel left" style="width:450px">
         <h1>Following</h1>
         {% for follow in follows %}													<!-- displaying users that are followed by logged in user -->
-        <div class="Wrapper">
+        <div class="Wrapper" style="width:400px">
             <a href="/users/{{ follow.user.username }}">
                 <img class="avatar" src="{{ follow.profile.gravatar_url }}">
                 <span class="name">{{ follow.user.first_name }}</span>
@@ -59,10 +59,10 @@
         {% endfor %}
     </div>
 	
-	<div class="panel right">
+	<div class="panel right" style="width:450px">
         <h1>Followers</h1>
         {% for follow in followers %}									<!-- displaying users that are followeing the logged in user -->
-        <div class="Wrapper">
+        <div class="Wrapper" style="width:400px">
             <a href="/users/{{ follow.user.username }}">
                 <img class="avatar" src="{{ follow.profile.gravatar_url }}">
                 <span class="name">{{ follow.user.first_name }}</span>

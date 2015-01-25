@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- tags for loading static files-->
+<html>
+<head>
+    <link rel="stylesheet/less" href="{% static 'style.less' %}"> <!-- tags for including stylesheet-->
+    <script src="{% static 'less.js' %}"></script> <!-- tags for js files-->
+</head>
+<body>
+    <header>
+        <div class="wrapper"> 
+		<div class="panel left" style="width:200px;float:left ; color:white;">
+            <img src="http://vectorlogo.biz/wp-content/uploads/2012/06/NEW-TWITTER-VECTORLOGO-BIZ-128x128.png" width=50px height=50px><span><h7  style="color:white">Chirpy</h7></span>
+            
+			</div>
+            {% block login %} 											<!-- Menu bar-->
+            <a href="/">Home</a>
+            <a href="/users/">Popular Accounts</a>
+            <a href="/users/{{ username }}">My Profile</a>
+            <a href="/chirpy">Discover</a>
+            <form action="/logout">
+                <input type="submit" id="btnLogOut" value="Log Out">
+            </form>
+            {% endblock %}
+        </div>
+    </header>
+    <div id="content">
+        <div class="wrapper">
+            {% block flash %}											<!-- for displaying any errors-->
+            {% if auth_form.non_field_errors or user_form.non_field_errors or chirpy_form.errors %}
+            <div class="flash error">
+                {{ auth_form.non_field_errors }}
+                {{ user_form.non_field_errors }}
+                {{ ribbit_form.content.errors }}
+            </div>
+            {% endif %}
+            {% if notice %}
+            <div class="flash notice">
+                {{ notice }}
+            </div>
+            {% endif %}
+            {% endblock %}
+
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <footer>
+        <div class="wrapper" style="color:white">
+            Copyright 2014 Chirpy
+           
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="panel left">
+        <h1>Create a Chirpy</h1>                    <!-- block containing for posting chirps/posts-->  
+        <p>
+            <form action="/submit" method="post">
+            {% for field in chirpy_form %}{% csrf_token %}
+            {{ field }}
+            {% endfor %}
+            <input type="hidden" value="{{ next_url }}" name="next_url">
+            <input type="submit" value="Chirp!">
+            </form>
+        </p>
+    </div>
+    <div class="panel right">
+        <h1>Public Chirpies</h1> 						<!-- block  containing profiles of all the users of chirpy-->
+        {% for chirpy in chirpy %}
+        <div class="Wrapper">
+            <img class="avatar" src="{{ chirpy.user.profile.gravatar_url }}">
+            <span class="name">{{ chirpy.user.first_name }}</span>@{{chirpy.user.username }}
+            <span class="time">{{ chirpy.creation_date|timesince }}</span>
+            <p>{{ chirpy.content }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
